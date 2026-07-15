@@ -94,17 +94,9 @@ Return ONLY valid JSON.
 
             return mapper.readValue(aiText, AIResponse.class);
 
-        } catch (Exception e) {
-
-            e.printStackTrace();
-
-            AIResponse error = new AIResponse();
-            error.setRootCause("Unable to analyze incident.");
-            error.setRiskLevel("UNKNOWN");
-            error.setImmediateAction("Try again.");
-            error.setPreventiveMaintenance("Not Available");
-
-            return error;
+        }
+        catch(Exception e){
+            throw new RuntimeException(e);
         }
     }
 }
